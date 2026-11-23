@@ -1,11 +1,3 @@
-/*
- * Team name: [ADD TEAM NAME]
- * Team members: [ADD ALL THREE NAMES]
- * Course: CS 2430, section [ADD SECTION]
- * Project: Programming Project 4 - Fall 2026
- * Primary author: [ADD AUTHOR]
- */
-
 /** The original US classic 40-square board, indexed clockwise from GO. */
 public final class Board {
     public static final int SIZE = 40;
