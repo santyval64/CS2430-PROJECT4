@@ -1,0 +1,241 @@
+=====================================
+START PROGRAM
+=====================================
+
+    Create the 40-space Monopoly board
+    Initialize the player position at GO (position 0)
+
+    Set total moves to 0
+    Set landing counter for every square to 0
+
+    Create Chance deck
+    Create Community Chest deck
+
+    Shuffle both decks
+
+    Initialize Get Out of Jail Free card tracking
+
+END INITIALIZATION
+
+-------------------------------------
+FUNCTION rollDice()
+-------------------------------------
+
+    Roll first six-sided die
+    Roll second six-sided die
+
+    RETURN sum of both dice
+
+END FUNCTION
+
+-------------------------------------
+FUNCTION movePlayer(steps)
+-------------------------------------
+
+    Update player position by adding steps
+
+    IF position is greater than 39
+        Wrap around to GO
+    END IF
+
+    RETURN new position
+
+END FUNCTION
+
+-------------------------------------
+FUNCTION resolveSpace()
+-------------------------------------
+
+    CHECK current board position
+
+    IF space is Chance
+        Draw Chance card
+        Apply card effect
+
+    ELSE IF space is Community Chest
+        Draw Community Chest card
+        Apply card effect
+
+    ELSE IF space is Go To Jail
+        Send player to Jail
+
+    ELSE
+        Keep player on current square
+    END IF
+
+    IF a card moves the player
+        Resolve the destination space if required
+    END IF
+
+    RETURN final player position
+
+END FUNCTION
+
+-------------------------------------
+FUNCTION takeTurn(strategy)
+-------------------------------------
+
+    Set consecutive doubles to 0
+
+    WHILE player has not completed turn
+
+        Roll two dice
+
+        IF both dice are equal
+            Increase consecutive doubles
+        ELSE
+            Reset consecutive doubles if appropriate
+        END IF
+
+        IF consecutive doubles equals 3
+            Send player to Jail
+            END TURN
+        END IF
+
+        Move player forward
+
+        Resolve current board space
+
+        IF player is sent to Jail
+            END TURN
+        END IF
+
+        IF dice are not doubles
+            END TURN
+        END IF
+
+    END WHILE
+
+    Increase total moves
+
+    Increase landing counter for final square
+
+END FUNCTION
+
+-------------------------------------
+FUNCTION jailStrategyA()
+-------------------------------------
+
+    IF player has Get Out of Jail Free card
+        Use card
+        Return player to normal play
+
+    ELSE
+        Assume player pays $50
+        Release player immediately
+        Return player to normal play
+    END IF
+
+END FUNCTION
+
+-------------------------------------
+FUNCTION jailStrategyB()
+-------------------------------------
+
+    IF player has Get Out of Jail Free card
+        Use card
+        Return player to normal play
+
+    ELSE
+        Attempt to roll doubles for up to 3 turns
+
+        IF doubles are rolled
+            Release player
+            Move according to dice
+        ELSE
+            After 3 unsuccessful attempts
+                Assume player pays $50
+                Release player on 4th turn
+        END IF
+    END IF
+
+END FUNCTION
+
+-------------------------------------
+FUNCTION runSimulation(strategy, numberOfTurns)
+-------------------------------------
+
+    Reset player position to GO
+    Reset landing counters
+    Reset player and deck state
+
+    FOR turn = 1 TO numberOfTurns
+
+        IF player is in Jail
+            Apply selected jail strategy
+        ELSE
+            takeTurn(strategy)
+        END IF
+
+    END FOR
+
+    FOR each square on the board
+
+        Calculate landing percentage:
+
+        percentage = (landing count / numberOfTurns) * 100
+
+        Output square name
+        Output landing count
+        Output landing percentage
+
+    END FOR
+
+END FUNCTION
+
+=====================================
+MAIN PROGRAM
+=====================================
+
+    Set turn counts:
+        1,000
+        10,000
+        100,000
+        1,000,000
+
+    FOR each jail strategy (A and B)
+
+        FOR simulation = 1 TO 10
+
+            FOR each turn count
+
+                Run simulation using selected strategy
+
+                Save landing counts
+                Save landing percentages
+
+            END FOR
+
+        END FOR
+
+    END FOR
+
+    Generate comparison summary
+
+    Identify top 3–5 most-landed-on squares
+
+    Compare Strategy A and Strategy B
+
+    Check whether results stabilize as turns increase
+
+    Output final results
+
+END PROGRAM
+
+-------------------------------------
+FUNCTION compareResults()
+-------------------------------------
+
+    Display top 5 squares for Strategy A
+    Display top 5 squares for Strategy B
+
+    Compare landing percentages at 1,000,000 turns
+
+    Identify squares with the largest differences
+
+    Determine whether both strategies approach
+    similar landing probability distributions
+
+    Identify unexpected results or anomalies
+
+END FUNCTION
