@@ -1,11 +1,3 @@
-/*
- * Team name: [ADD TEAM NAME]
- * Team members: [ADD ALL THREE NAMES]
- * Course: CS 2430, section [ADD SECTION]
- * Project: Programming Project 4 - Fall 2026
- * Primary author: [ADD AUTHOR]
- */
-
 /**
  * We store the movement effect, not the full commercial card text.
  * Non-movement cards are present in decks but have action NONE, because
