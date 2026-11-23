@@ -1,11 +1,3 @@
-/*
- * Team name: [ADD TEAM NAME]
- * Team members: [ADD ALL THREE NAMES]
- * Course: CS 2430, section [ADD SECTION]
- * Project: Programming Project 4 - Fall 2026
- * Primary author: [ADD AUTHOR]
- */
-
 /** One of the 40 indexed spaces on the standard US Monopoly board. */
 public final class Square {
     public enum Type {
