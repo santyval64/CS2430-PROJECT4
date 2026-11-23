@@ -1,11 +1,3 @@
-/*
- * Team name: [ADD TEAM NAME]
- * Team members: [ADD ALL THREE NAMES]
- * Course: CS 2430, section [ADD SECTION]
- * Project: Programming Project 4 - Fall 2026
- * Primary author: [ADD AUTHOR]
- */
-
 /**
  * Executes ONE complete turn (potentially including extra rolls for doubles).
  * The only square counted is the final square at the end of that turn.
